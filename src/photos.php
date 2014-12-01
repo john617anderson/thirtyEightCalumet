@@ -19,6 +19,7 @@ echo '<script> var total ="' . $i . '"</script>';
 <html>
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width;minimum-scale=0.5,maximum-scale=1.0; user-scalable=1;" />
 	<script src="jquery.js"></script>
     <link rel="stylesheet" href="source/jquery.fancybox.css" type="text/css" media="screen" />
     <script type="text/javascript" src="source/jquery.fancybox.pack.js"></script>
@@ -32,19 +33,63 @@ echo '<script> var total ="' . $i . '"</script>';
 		#container{
 			height : 100%;
 			width : 100%;
+			position: absolute;
+			overflow: scroll;
+			padding: 65px 0;
 		}
 		.images, a{
 			width : 24.5%;
 			padding : 0; 
 			margin : 0; 
 		}
+
+		#headerWrapper{
+			position: fixed;
+			z-index: 999;
+			width: 100%;
+		}
+
+		#header{
+				width: : 100%;
+				padding : 1.2rem;
+				background: rgba(256, 256, 256, .8); 
+			}
+
+			span a, span{
+				text-decoration: none; 
+				color : #333;
+				font-size: 20px;
+				letter-spacing: -1px;
+			}
+
+		#title{
+			float: right;
+		}
 		
 		@media only screen and (max-width : 420px) {
+			#headerWrapper{
+				position: relative;
+			}
 			.images, a{
-				width : 32%;
+				width : 100%;
 				padding : 0; 
 				margin : 0; 
 			}
+
+			#container{
+				padding: 0;
+			}
+
+			#header{
+					padding : 1rem;
+				}
+
+				span a, span{
+					text-decoration: none; 
+					color : #333;
+					font-size: 1rem;
+					letter-spacing: 0px;
+				}
 		}
 	</style>
 <script>
@@ -65,7 +110,7 @@ echo '<script> var total ="' . $i . '"</script>';
 				_w = $(this).height();
 			}
 		}); 
-		for(i = 0; i < total - 1; i++){
+		for(i = 0; i < total; i++){
 			console.log(i.toString().length); 
 
 			var it; 
@@ -90,10 +135,6 @@ echo '<script> var total ="' . $i . '"</script>';
 			location.hash = _img;
 		});
 
-		$('.fancybox-item fancybox-close').click(function(){
-			alert('s');
-		});
-
 		if(url.search('#') !== -1){
 			var goTo = url.substr(url.indexOf("#") + 1, url.length);
 			var _dir = dir + '/' + goTo; 
@@ -108,6 +149,12 @@ echo '<script> var total ="' . $i . '"</script>';
 </script>
 </head>
 <body>
+	<div id="headerWrapper">
+		<div id="header">
+			<span id="title"><a href="/">back</a></span>
+			<span>Thirty-Eight Calumet</span>
+		</div>
+	</div>	
 	<div id="container">
 
 	</div>

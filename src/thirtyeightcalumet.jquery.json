@@ -1,0 +1,27 @@
+{
+  "name": "thirtyeightcalumet",
+  "title": "website",
+  "description": "photosite",
+  "version": "0.1.0",
+  "homepage": "http://thirtyeightcalumet.com",
+  "author": {
+    "name": "John Anderson",
+    "email": "john617anderson@gmail.com",
+    "url": "thirtyeightcalumet.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/john617anderson/thirtyEightCalumet.git"
+  },
+  "bugs": "https://github.com/john617anderson/thirtyEightCalumet/issues",
+  "licenses": [
+    {
+      "type": "none",
+      "url": "http://thirtyeightcalumet.com/blob/master/LICENSE-none"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
