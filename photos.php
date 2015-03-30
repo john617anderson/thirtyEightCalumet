@@ -28,25 +28,62 @@ echo '<script> var total ="' . $i . '"</script>';
 			padding : 0;
 			margin : 0; 
 			text-decoration: none;
+			list-style: none;
+			list-style-type: none;
 		}
 
 		#container{
-			height : 100%;
-			width : 100%;
+			height : 100vw;
+			width : 100vw;
 			position: absolute;
-			overflow: scroll;
-			padding: 65px 0;
 		}
-		.images, a{
-			width : 24.5%;
-			padding : 0; 
-			margin : 0; 
+
+		.images{
+			float: left; 
+			width: 25vw;
+			height: 25vw;
+			overflow: hidden;
 		}
 
 		#headerWrapper{
 			position: fixed;
 			z-index: 999;
 			width: 100%;
+		}
+
+		#hero{
+			width : 100vw;
+			height : 40vw;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.heroPhoto{
+			width : 100vw;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.heroText{
+			position: absolute;
+			bottom: 1.1rem;
+			left : 1rem;
+			font-size: 2rem;
+			letter-spacing: 1;
+			color: white;
+		}
+
+		.black{
+			position: absolute;
+			width: inherit; 
+			height: inherit;
+			background: -moz-linear-gradient(top, rgba(0,0,0,0) 27%, rgba(0,0,0,.7) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(27%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,.7))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0) 27%,rgba(0,0,0,7) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, rgba(0,0,0,0) 27%,rgba(0,0,0,.7) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, rgba(0,0,0,0) 27%,rgba(0,0,0,.7) 100%); /* IE10+ */
+			background: linear-gradient(to bottom, rgba(0,0,0,0) 27%,rgba(0,0,0,.7) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#ba000000',GradientType=0 ); /* IE6-9 */
 		}
 
 		#header{
@@ -67,13 +104,21 @@ echo '<script> var total ="' . $i . '"</script>';
 		}
 		
 		@media only screen and (max-width : 420px) {
+			#wrapper{
+				width : 100vw;
+			}
 			#headerWrapper{
 				position: relative;
 			}
+			#hero{
+				display: none;
+			}
+
 			.images, a{
-				width : 100%;
+				width : 100vw;
 				padding : 0; 
 				margin : 0; 
+				height : initial;
 			}
 
 			#container{
@@ -110,7 +155,7 @@ echo '<script> var total ="' . $i . '"</script>';
 				_w = $(this).height();
 			}
 		}); 
-		for(i = 0; i < total; i++){
+		for(i = 0; i < total - 1; i++){
 			console.log(i.toString().length); 
 
 			var it; 
@@ -155,8 +200,21 @@ echo '<script> var total ="' . $i . '"</script>';
 			<span>Thirty-Eight Calumet</span>
 		</div>
 	</div>	
-	<div id="container">
+	<div id="wrapper">
+		<div id="hero">
+			<div class="black"></div>
+			<?php 
+				//$string = preg_replace(‘/(?<=\\w)(?=[A-Z])/’,” $1″, $dir);
+				//$string = trim($string);
 
+				echo '<div class="heroText">'. $dir . '</div>';
+				echo '<img class="heroPhoto" src="' . $dir . '/gopro_00' . rand(10, 20) . '.jpg" />';
+			?>
+		</div>
+		<div id="container">
+
+		</div>
 	</div>
+	
 </body>
 </html>
